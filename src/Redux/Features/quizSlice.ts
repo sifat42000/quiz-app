@@ -16,7 +16,7 @@ const initialState: TQuiz = {
     userAnswers:Array(quizApp.length).fill(null),
     quizComplete: false 
 }
-
+ 
 
 export const quizSlice = createSlice({
     name : 'quizApp',
@@ -24,27 +24,32 @@ export const quizSlice = createSlice({
     reducers:{
         setAnswer : (state,action) =>{
             const {questionIndex,answer} = action.payload
-            // console.log(questionIndex,answer)
+            state.userAnswers = [...state.userAnswers]
+            state.userAnswers[questionIndex] = answer
         },
+
+
         increament : (state) =>{
-            if(state.currentQuestionIndex < 7){
+            if(state.currentQuestionIndex < 6){
                 state.currentQuestionIndex += 1
             }
-            else{
-                state
-            }
+            
         },
+
+        
         decreament : (state) =>{
             if(state.currentQuestionIndex > 0){
                 state.currentQuestionIndex -= 1
             }
-            else {
-                state
-            }
+           
+        },
+
+        completedQuestion : (state) =>{
+           state.quizComplete = true
         }
     }
 })
 
-export const {setAnswer,increament,decreament} = quizSlice.actions
+export const {setAnswer,increament,decreament,completedQuestion} = quizSlice.actions
 
 export default quizSlice.reducer

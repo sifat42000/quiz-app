@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { setAnswer } from "@/Redux/Features/quizSlice";
 import { useAppDispatch, useAppSelector } from "@/Redux/hook";
 import QuizControll from "./QuizControll";
@@ -9,15 +9,16 @@ import QuizControll from "./QuizControll";
 
 const Question = () => {
 
-    const dispath = useAppDispatch(); 
+    const dispatch = useAppDispatch(); 
     const { question, currentQuestionIndex, userAnswers } = useAppSelector((state) => state.quiz)
     const currentQuestion = question[currentQuestionIndex]
     const currentAnswer = userAnswers[currentQuestionIndex]
     console.log(currentAnswer)
+    console.log("Current Answer:", currentAnswer);
 
     const handleClick = (answer : string) =>{
-        dispath(setAnswer({questionIndex:currentQuestionIndex,answer}))
-        // console.log(answer,questionIndex)
+        dispatch(setAnswer({questionIndex:currentQuestionIndex,answer}))
+        // console.log(answer,currentQuestionIndex)
     }
 
     return (
@@ -39,9 +40,9 @@ const Question = () => {
 
                 </CardContent>
                 <QuizControll/>
-                <CardFooter className="flex justify-between">
+                {/* <CardFooter className="flex justify-between">
                     xyz
-                </CardFooter>
+                </CardFooter> */}
             </Card>
         </div>
     );

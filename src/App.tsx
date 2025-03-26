@@ -1,14 +1,22 @@
 import './App.css'
 
 import Question from './Home/Question'
+import QuizSummary from './Home/QuizSummary'
+import { useAppSelector } from './Redux/hook'
 
 function App() {
+
+  const {quizComplete} = useAppSelector(state=>state.quiz)
   
 
   return (
    <div className='mt-32 '>
     <h2 className='flex justify-center mb-9 text-3xl '>বাংলাদেশের কিছু সাধারণ প্রশ্ন</h2>
-   <Question/>
+  {
+    quizComplete === true?  <QuizSummary/>:<Question/>
+    
+
+  }
    </div>
   )
 }
