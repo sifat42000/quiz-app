@@ -11,7 +11,13 @@ function App() {
 
   return (
    <div className='mt-32 '>
-    <h2 className='flex justify-center mb-9 text-3xl '>বাংলাদেশের কিছু সাধারণ প্রশ্ন</h2>
+    {
+      quizComplete === true? 
+      <h2 className='flex justify-center mb-9 text-3xl '>Quiz শেষ! এবার ফলাফল দেখো</h2> :
+      <h2 className='flex justify-center mb-9 text-3xl '>বাংলাদেশের কিছু সাধারণ প্রশ্ন</h2>
+    }
+   
+   
   {
     quizComplete === true?  <QuizSummary/>:<Question/>
     
